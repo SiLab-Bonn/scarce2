@@ -19,6 +19,7 @@ class Sensor(object):
         pitch: int | float = 50,
         electrode_size: int | float = 10,
         thickness: int | float = 100,
+        n_eff: int | float = 2.7e12
     ):
         """Base class for different sensors
 
@@ -33,7 +34,7 @@ class Sensor(object):
         self.electrode_size = electrode_size
         self.thickness = thickness
 
-        self.n_eff = 2.7e12
+        self.n_eff = n_eff
         self.mesh_file = "/tmp/mesh.msh2"
 
         self.griddata = {}
@@ -88,7 +89,7 @@ class Sensor(object):
 
         m.geo.synchronize()
         m.mesh.generate(dim=2)
-        gmsh.write("/tmp/mesh.msh2")  # fipy can only read msh version 2
+        gmsh.write(self.mesh_file)  # fipy can only read msh version 2
 
     def setup_e_potential(self):
         """Define electric potential"""
