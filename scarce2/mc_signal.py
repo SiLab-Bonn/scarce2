@@ -6,9 +6,10 @@ from scarce2 import plotting
 from scarce2 import signals  # required for charge propagation
 from tqdm import tqdm
 
-def calc_total_charge(timestep, thickness, pitch, electorde_size, v_bias):
+
+def calc_total_charge(timestep, thickness, pitch, electorde_size, v_bias, n_eff=2e12):
     
-    s = Sensor(n_pixel=7, pitch=pitch, electrode_size=electorde_size, thickness=thickness)
+    s = Sensor(n_pixel=7, pitch=pitch, electrode_size=electorde_size, thickness=thickness, n_eff=n_eff)
     s.generate_mesh(mesh_density=1)
     s.setup_w_potential()
     s.solve_w_potential()

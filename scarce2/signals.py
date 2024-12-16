@@ -134,7 +134,6 @@ def _calculate_field(position: Tuple[float, float], field, sensor_dim: Tuple[flo
 
     return field_at_pos
 
-
 @njit
 def _propagate_charge(start_loc: Tuple[float, float], field, mobility, timestep: float = 0.1) -> float:
     x_start, y_start = start_loc
