@@ -39,6 +39,6 @@ def calc_total_charge(timestep, thickness, pitch, electorde_size, v_bias, n_eff=
 
             abs_time = np.linspace(0, len(charge_e) * timestep, len(charge_e))
 
-            charge_placeholder[shift:len(abs_time)+shift] = (np.cumsum(charge_e) + np.cumsum(charge_h)) - 1
+            charge_placeholder[shift:len(abs_time)+shift] = (np.cumsum(charge_e) + np.cumsum(charge_h))
             total_charge = total_charge + charge_placeholder
-    return total_charge
+    return total_charge, charge_e, charge_h
